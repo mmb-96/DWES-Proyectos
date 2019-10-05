@@ -1,14 +1,15 @@
 <html>
+<head>
+	<title>Menu principal - Nomina</title>
+</head>
 <body>
 <h2>Nomina</h2>
-	<% out.println("1. Muestra la informacion de todos los empleados.<br>"
-								 + "2. Muesta el salario de un empleado por su dni.<br>"
-								 + "3. Modificar datos de empleados.<br>"
-								 + "4. Recalcular y actualizar el sueldo de un empleado.<br>"
-								 + "5. Recalcular y actualizar los sueldos de todos los empleados.<br>"
-								 + "6. Realizar copia de seguridad.<br>"
-								 + "7. Salir del programa.<br>");%>
-				<% out.println("Seleccione un opcion:<br>");%>
+	<a href="prueba.html"><input type="button" value="Muestra la informacion de todos los empleados."></input></a><br>
+	<a href="prueba.html"><input type="button" value="Muesta el salario de un empleado por su dni"></input></a><br>
+	<a href="prueba.html"><input type="button" value="Modificar datos de empleados."></input></a><br>
+	<a href="prueba.html"><input type="button" value="Recalcular y actualizar el sueldo de un empleado."></input></a><br>
+	<a href="prueba.html"><input type="button" value="Recalcular y actualizar los sueldos de todos los empleados."></input></a><br>
+	<a href="prueba.html"><input type="button" value="Realizar copia de seguridad."></input></a><br>
 				<%-- opc = number.nextInt();
 				System.out.println("");
 				switch (opc) {
