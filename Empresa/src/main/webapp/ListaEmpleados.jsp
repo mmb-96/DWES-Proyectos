@@ -30,5 +30,6 @@
 	</c:forEach>                      
 	</tbody>
 </table>
+<a href="index.jsp"><input type="button" value="Volver."></input></a><br>
 </body>
 </html>

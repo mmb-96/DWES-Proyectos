@@ -32,14 +32,16 @@ public class EmpleadosController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String action = request.getParameter("action");
 	        if ("listaTotal".equals(action)) {
-	            try {
+				try {
 					this.listaTotal(request, response);
 				} catch (Exception e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+	        } else if ("salario".equals(action)) {
+	        	this.salario(request, response);
 	        }
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,11 +55,15 @@ public class EmpleadosController extends HttpServlet {
 		DB conn = new DB();
         List<Empleado> lista = conn.mostarDatosTodos();
         conn.disconnect();
-        // Compartimos la variable lista, para poder accederla desde la vista
         request.setAttribute("empleados", lista);
         RequestDispatcher rd;
         rd = request.getRequestDispatcher("/ListaEmpleados.jsp");
         rd.forward(request, response);
+	}
+	
+	private void salario(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
