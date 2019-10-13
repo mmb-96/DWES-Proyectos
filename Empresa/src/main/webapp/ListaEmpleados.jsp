@@ -1,6 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ page import="Laboral.Empleado" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,7 @@
 		</tr>
 	</thead>
     <tbody>
-    <c:forEach items="${empleados}" var="empleado" varStatus="status">
+    <c:forEach items="${empleados}" var="empleado">
     	<tr>
         	<td>${empleado.nombre}</td>
             <td>${empleado.dni}</td>
@@ -30,6 +30,8 @@
 	</c:forEach>                      
 	</tbody>
 </table>
-<a href="index.jsp"><input type="button" value="Volver."></input></a><br>
+<br>
+<br>
+<a href="index.html"><input type="button" value="Volver."></input></a><br>
 </body>
 </html>

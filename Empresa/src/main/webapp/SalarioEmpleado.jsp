@@ -7,7 +7,7 @@
 <title>Salario empleado - Nomina</title>
 </head>
 <body>
-
-<a href="index.jsp"><input type="button" value="Volver."></input></a><br>
+El suedo del empleado con DNI ${dni} es ${salario}. <br>
+<a href="index.html"><input type="button" value="Volver."></input></a><br>
 </body>
 </html>

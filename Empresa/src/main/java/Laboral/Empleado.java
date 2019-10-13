@@ -65,5 +65,9 @@ public class Empleado extends Persona {
 	public String imprime() {
 		return nombre + " "+ dni + " " + categoria + " " + anyos;
 	}
+ 	
+ 	public int getAnyos() {
+		return anyos;
+	}
 
 }

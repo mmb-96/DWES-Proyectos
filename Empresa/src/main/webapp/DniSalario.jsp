@@ -7,9 +7,10 @@
 <title>Buscar salario de empleado - Nomina</title>
 </head>
 <body>
-<from>
-	<input type="text">
-</from>
-<a href="index.jsp"><input type="button" value="Volver."></input></a><br>
+<form method ="post" action="Empleados">
+	<input type="text" name="dni" required placeholder="DNI empleado">     
+    <button type="submit">Buscar</button>
+</form>
+<a href="index.html"><input type="button" value="Volver."></input></a><br>
 </body>
 </html>
