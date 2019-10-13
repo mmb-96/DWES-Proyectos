@@ -30,62 +30,37 @@ public class EmpleadosController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 List<Empleado> lista = null;
-		try {
-			DB conn = new DB();
-			lista = conn.mostarDatosTodos();
-	        conn.disconnect();
-		}catch (Exception e) {
-		}
-        request.setAttribute("empleados", lista);
-        RequestDispatcher rd;
-        rd = request.getRequestDispatcher("ListaEmpleados.jsp");
-        rd.forward(request, response);
-        System.out.println(request.getAttribute("empleados"));
-		 /*String action = request.getParameter("action");
+		 String action = request.getParameter("action");
 	        if ("listaTotal".equals(action)) {
 	        	try {
-					this.listaTotal(request, response);
-					System.out.println("action 1");
-					
+					this.listaTotal(request, response);					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 	        }
-	        System.out.println(request.toString());
-	        System.out.println(response.toString());*/
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int sueldo = 0;
-		try {
-			DB con = new DB();
-			sueldo = con.salaraioDni(request.getParameter("dni"));
-			con.disconnect();
-		} catch (Exception e) {
-		}
-		request.setAttribute("dni", request.getParameter("dni"));
-		request.setAttribute("salario", sueldo);
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("SalarioEmpleado.jsp");
-		rd.forward(request, response);
-		System.out.println("sueldo " + sueldo);
-		/*String action = request.getParameter("action");
+String action = request.getParameter("action");
 		if ("salario".equals(action)) {
         	try {
         		String dni = request.getParameter("dni");
 				this.salario(request, response, dni);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-        	System.out.println("action 2");
+        }  else if ("solo".equals("action")) {
+        	String dni;
+        	try {
+        		dni = request.getParameter("dni");
+        		this.solo(request, response, dni);
+        	}catch (Exception e) {
+				e.printStackTrace();
+			}
         }
-        System.out.println(request.toString());
-        System.out.println(response.toString());*/
 	}
 	
 	private void listaTotal(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -103,12 +78,22 @@ public class EmpleadosController extends HttpServlet {
 		DB con = new DB();
 		int sueldo = con.salaraioDni(dni);
 		con.disconnect();
+		request.setAttribute("dni", request.getParameter("dni"));
 		request.setAttribute("salario", sueldo);
 		RequestDispatcher rd;
 		rd = request.getRequestDispatcher("SalarioEmpleado.jsp");
 		rd.forward(request, response);
-		System.out.println("sueldo " + sueldo);
-
 	}
+	
+	private void solo(HttpServletRequest request, HttpServletResponse response, String dni) throws Exception {
+		DB con = new DB();
+		Empleado empl = con.persona(dni);
+		con.disconnect();
+		request.setAttribute("empleado", empl);
+		RequestDispatcher rd;
+		rd = request.getRequestDispatcher("ModificarEmpleado.jsp");
+		rd.forward(request, response);
+	}
+
 
 }

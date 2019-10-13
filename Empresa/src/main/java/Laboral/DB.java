@@ -201,4 +201,14 @@ public class DB {
 		
 		}
 	}
+
+	public Empleado persona(String dni) throws SQLException, DatosNoCorrectoException {
+		sql = "Select * From Empleados Where dni = ?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, dni);
+		rs = pstmt.executeQuery();
+		Empleado emple = new Empleado(rs.getString(1), rs.getString(2), rs.getString(3).charAt(0), rs.getInt(4), rs.getInt(5));
+		
+		return emple;
+	}
 }
