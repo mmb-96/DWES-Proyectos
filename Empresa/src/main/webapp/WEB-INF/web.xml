@@ -9,8 +9,30 @@
   	<servlet-name>EmpleadosController</servlet-name>
   	<servlet-class>Controller.EmpleadosController</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>Modic</display-name>
+  	<servlet-name>Modic</servlet-name>
+  	<servlet-class>Controller.Modic</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	Servlet que manda las modificaciones de un empleado a la DB</description>
+  	<display-name>ModificarDB</display-name>
+  	<servlet-name>ModificarDB</servlet-name>
+  	<servlet-class>Controller.ModificarDB</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmpleadosController</servlet-name>
   	<url-pattern>/Empleados</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Modic</servlet-name>
+  	<url-pattern>/Modic</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ModificarDB</servlet-name>
+  	<url-pattern>/ModificarDB</url-pattern>
   </servlet-mapping>
 </web-app>
