@@ -44,23 +44,21 @@ public class EmpleadosController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-String action = request.getParameter("action");
-		if ("salario".equals(action)) {
-        	try {
-        		String dni = request.getParameter("dni");
-				this.salario(request, response, dni);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-        }  else if ("solo".equals("action")) {
-        	String dni;
-        	try {
-        		dni = request.getParameter("dni");
-        		this.solo(request, response, dni);
-        	}catch (Exception e) {
-				e.printStackTrace();
-			}
-        }
+		RequestDispatcher rd;
+		String dni = request.getParameter("dni");
+		int sueldo = 0;
+		DB con;
+		try {
+			con = new DB();
+			sueldo = con.salaraioDni(dni);
+			con.disconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		request.setAttribute("dni", dni);
+		request.setAttribute("salario", sueldo);
+		rd = request.getRequestDispatcher("SalarioEmpleado.jsp");
+		rd.forward(request, response);
 	}
 	
 	private void listaTotal(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -71,29 +69,5 @@ String action = request.getParameter("action");
 	        RequestDispatcher rd;
 	        rd = request.getRequestDispatcher("ListaEmpleados.jsp");
 	        rd.forward(request, response);
-	        System.out.println("listar total " + lista.toString());
 	}
-	
-	private void salario(HttpServletRequest request, HttpServletResponse response, String dni) throws Exception {
-		DB con = new DB();
-		int sueldo = con.salaraioDni(dni);
-		con.disconnect();
-		request.setAttribute("dni", request.getParameter("dni"));
-		request.setAttribute("salario", sueldo);
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("SalarioEmpleado.jsp");
-		rd.forward(request, response);
-	}
-	
-	private void solo(HttpServletRequest request, HttpServletResponse response, String dni) throws Exception {
-		DB con = new DB();
-		Empleado empl = con.persona(dni);
-		con.disconnect();
-		request.setAttribute("empleado", empl);
-		RequestDispatcher rd;
-		rd = request.getRequestDispatcher("ModificarEmpleado.jsp");
-		rd.forward(request, response);
-	}
-
-
 }

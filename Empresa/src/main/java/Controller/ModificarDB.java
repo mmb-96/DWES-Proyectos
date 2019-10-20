@@ -1,8 +1,8 @@
 package Controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,16 +27,21 @@ public class ModificarDB extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String dni = request.getParameter("dni");
+		RequestDispatcher rd;
 		try {
 			DB con = new DB();
-			con.actualizarNombre(request.getParameter("dni"), request.getParameter("categoria"));
-			con.actualizarSexo(request.getParameter("dni"), request.getParameter("sexo").charAt(0));
-			con.actualizarCategoria(request.getParameter("dni"), Integer.parseInt(request.getParameter("categoria")));
-			con.actualizarAnyos(request.getParameter("dni"), Integer.parseInt(request.getParameter("anyos")));
-			con.actualizarSueldo(request.getParameter("dni"));
+			con.actualizarNombre(dni, request.getParameter("nombre"));
+			con.actualizarSexo(dni, request.getParameter("sexo").charAt(0));
+			con.actualizarCategoria(dni, Integer.parseInt(request.getParameter("categoria")));
+			con.actualizarAnyos(dni, Integer.parseInt(request.getParameter("anyos")));
+			con.actualizarSueldoTodos();
+			rd = request.getRequestDispatcher("Exito.html");
 		} catch (Exception e) {
 			e.printStackTrace();
+			rd = request.getRequestDispatcher("Error.html");
 		}
+		rd.forward(request, response);
 		
 	}
 }

@@ -7,7 +7,7 @@
 <title>Buscar empleado para modificar - Nomina</title>
 </head>
 <body>
-<form method ="post" action="Empleados">
+<form method ="post" action="ModificarEmpleado">
 	<input type="text" name="dni" required placeholder="DNI empleado">     
     <button type="submit">Buscar</button>
 </form>

@@ -17,7 +17,7 @@ public class Nomina {
 		 */
 		public static int sueldo(Empleado ep) {
 			int categoria = ep.getCategoria()-1;
-			return SUELDO_BASE[categoria]+5000*ep.anyos;
+			return SUELDO_BASE[categoria]+5000*ep.getAnyos();
 			
 		}
 

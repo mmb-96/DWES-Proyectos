@@ -6,33 +6,34 @@
     version="4.0">
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
+    <description>Servlet que muestra los Empleados y los salarios de los empleados de la DB</description>
+  	<display-name>EmpleadosController</display-name>
   	<servlet-name>EmpleadosController</servlet-name>
   	<servlet-class>Controller.EmpleadosController</servlet-class>
   </servlet>
   <servlet>
-  	<description>
-  	</description>
-  	<display-name>Modic</display-name>
-  	<servlet-name>Modic</servlet-name>
-  	<servlet-class>Controller.Modic</servlet-class>
-  </servlet>
-  <servlet>
-  	<description>
-  	Servlet que manda las modificaciones de un empleado a la DB</description>
+  	<description>Servlet que manda las modificaciones de un empleado a la DB</description>
   	<display-name>ModificarDB</display-name>
   	<servlet-name>ModificarDB</servlet-name>
   	<servlet-class>Controller.ModificarDB</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	Servlet que obtiene un empleado a modificar de la base de datos.</description>
+  	<display-name>ModificarEmpleado</display-name>
+  	<servlet-name>ModificarEmpleado</servlet-name>
+  	<servlet-class>Controller.ModificarEmpleado</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>EmpleadosController</servlet-name>
   	<url-pattern>/Empleados</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>Modic</servlet-name>
-  	<url-pattern>/Modic</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>ModificarDB</servlet-name>
   	<url-pattern>/ModificarDB</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ModificarEmpleado</servlet-name>
+  	<url-pattern>/ModificarEmpleado</url-pattern>
   </servlet-mapping>
 </web-app>
