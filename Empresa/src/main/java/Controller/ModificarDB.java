@@ -33,10 +33,12 @@ public class ModificarDB extends HttpServlet {
 			DB con = new DB();
 			con.actualizarNombre(dni, request.getParameter("nombre"));
 			con.actualizarSexo(dni, request.getParameter("sexo").charAt(0));
-			con.actualizarCategoria(dni, Integer.parseInt(request.getParameter("categoria")));
+			con.actualizarCategoria(dni, Integer.parseInt(request.getParameter("categoria")));;
 			con.actualizarAnyos(dni, Integer.parseInt(request.getParameter("anyos")));
-			con.actualizarSueldoTodos();
+			con.actualizarSueldo(dni);
+			con.disconnect();
 			rd = request.getRequestDispatcher("Exito.html");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			rd = request.getRequestDispatcher("Error.html");

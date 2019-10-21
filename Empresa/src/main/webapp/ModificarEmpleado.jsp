@@ -8,7 +8,7 @@
 </head>
 <body>
 <form method ="post" action="ModificarDB">
-	<input type="text" name="dni" required placeholder="DNI empleado" disabled="disabled" value="${empleado.dni}">
+	<input type="text" name="dni" required placeholder="DNI empleado" readonly value="${empleado.dni}">
 	<input type="text" name="nombre" required placeholder="Nombre empleado" value="${empleado.nombre}">  
 	<input type="text" name="sexo" required placeholder="Sexo empleado" value="${empleado.sexo}">  
 	<input type="text" name="categoria" required placeholder="Categoria empleado" value="${empleado.categoria}">  
