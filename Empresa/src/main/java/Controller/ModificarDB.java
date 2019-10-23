@@ -1,19 +1,18 @@
 package Controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import Laboral.DB;
 
 /**
  * Servlet implementation class ModificarDB
  */
 public class ModificarDB extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -38,12 +37,10 @@ public class ModificarDB extends HttpServlet {
 			con.actualizarSueldo(dni);
 			con.disconnect();
 			rd = request.getRequestDispatcher("Exito.html");
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			rd = request.getRequestDispatcher("Error.html");
 		}
 		rd.forward(request, response);
-		
 	}
 }
