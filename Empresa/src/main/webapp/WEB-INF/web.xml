@@ -24,6 +24,13 @@
   	<servlet-name>ModificarEmpleado</servlet-name>
   	<servlet-class>Controller.ModificarEmpleado</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	Controller uncio para la aplicacion</description>
+  	<display-name>EmpresaController</display-name>
+  	<servlet-name>EmpresaController</servlet-name>
+  	<servlet-class>Controller.EmpresaController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>EmpleadosController</servlet-name>
   	<url-pattern>/Empleados</url-pattern>
@@ -35,5 +42,9 @@
   <servlet-mapping>
   	<servlet-name>ModificarEmpleado</servlet-name>
   	<url-pattern>/ModificarEmpleado</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EmpresaController</servlet-name>
+  	<url-pattern>/EmpresaController</url-pattern>
   </servlet-mapping>
 </web-app>
