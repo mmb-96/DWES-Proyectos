@@ -1,4 +1,4 @@
-package Laboral;
+package laboral;
 
 public class DatosNoCorrectoException extends Exception {
 

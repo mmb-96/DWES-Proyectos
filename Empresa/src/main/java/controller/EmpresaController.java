@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Laboral.DB;
-import Laboral.Empleado;
+import laboral.DB;
+import laboral.Empleado;
 
 /**
  * Servlet implementation class EmpresaController
@@ -31,24 +31,6 @@ public class EmpresaController extends HttpServlet {
     }
     
 	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		 try {
-			con = new DB();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @see Servlet#destroy()
-	 */
-	public void destroy() {
-		con.disconnect();
-	}
-
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,34 +42,35 @@ public class EmpresaController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = null;
+		String pagSiguiente = null;
 		String action = request.getParameter("action");
 		try {
 			switch (action) {
 				case "Muestra empleados":
 					this.listaTotal(request, response);
-				    rd = request.getRequestDispatcher("ListaEmpleados.jsp");
+					pagSiguiente = "ListaEmpleados.jsp";
 					break;
 				case "Muestra sueldo":
 					this.mostarSueldo(request, response);
-					rd = request.getRequestDispatcher("SalarioEmpleado.jsp");
+					pagSiguiente = "SalarioEmpleado.jsp";
 					break;
 				case "Recuperar empleados":
 					this.obtenerEmpleado(request, response);
-					rd = request.getRequestDispatcher("ModificarEmpleado.jsp");
+					pagSiguiente = "ModificarEmpleado.jsp";
 					break;
 				case "Modificar empleados":
 					this.modificarEmpleado(request, response);
-					rd = request.getRequestDispatcher("Exito.html");					
+					pagSiguiente = "Exito.html";
 					break;
 				default:
-					System.out.println(action);
-					rd = request.getRequestDispatcher("Error.html");
+					pagSiguiente = "Error.html";
 					break;
 			}
 		} catch (Exception e) {
 			System.out.println(e);
-			rd = request.getRequestDispatcher("Error.html");
+			pagSiguiente = "Error.html";
 		}
+		rd = request.getRequestDispatcher(pagSiguiente);
 		rd.forward(request, response);
 	}
 	
@@ -97,7 +80,6 @@ public class EmpresaController extends HttpServlet {
 	}
 	
 	private void mostarSueldo (HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println(request.getParameter("dni"));
 		String dni = request.getParameter("dni");
 		int	sueldo = con.salaraioDni(dni);
 		request.setAttribute("dni", dni);

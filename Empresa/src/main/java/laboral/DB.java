@@ -1,4 +1,4 @@
-package Laboral;
+package laboral;
 
 
 import java.io.BufferedWriter;
