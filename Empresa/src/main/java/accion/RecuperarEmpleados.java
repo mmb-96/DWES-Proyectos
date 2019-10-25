@@ -1,36 +1,31 @@
-/**
- * 
- */
 package accion;
 
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Laboral.DatosNoCorrectoException;
 import Laboral.Empleado;
 import dao.EmpleadoDao;
 
-/**
- * @author manu
- *
- */
-public class MuestraEmpleados implements Facade {
+public class RecuperarEmpleados implements Facade {
 	EmpleadoDao empDao;
-
-	public MuestraEmpleados() {
+	
+	public RecuperarEmpleados() {
 		empDao = new EmpleadoDao();
 	}
+
 	@Override
 	public String ejecutar(ServletContext sc, HttpServletRequest request, HttpServletResponse response) {
 		String pagSiguiente;
-		List<Empleado> lista;
+		Empleado empl;
 		try {
-			lista = empDao.mostarDatosTodos();
-			request.setAttribute("empleados", lista);
-			pagSiguiente = "ListaEmpleados.jsp";
-		} catch (Exception e) {
+			empl = empDao.persona(request.getParameter("dni"));
+			request.setAttribute("empleado", empl);
+			pagSiguiente = "ModificarEmpleado.jsp";
+		} catch (SQLException | DatosNoCorrectoException e) {
 			e.printStackTrace();
 			pagSiguiente = "Error.html";
 		}

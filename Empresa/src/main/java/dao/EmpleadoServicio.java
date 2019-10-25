@@ -17,9 +17,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import laboral.DatosNoCorrectoException;
-import laboral.Empleado;
-import laboral.Nomina;
+import Laboral.DatosNoCorrectoException;
+import Laboral.Empleado;
+import Laboral.Nomina;
 
 /**
  * @author manu

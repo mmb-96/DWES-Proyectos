@@ -1,7 +1,7 @@
 /**
  * 
  */
-package laboral;
+package Laboral;
 
 /**
  * @author manu

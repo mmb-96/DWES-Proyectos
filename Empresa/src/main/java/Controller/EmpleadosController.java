@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import laboral.DB;
-import laboral.Empleado;
+import Laboral.DB;
+import Laboral.Empleado;
 
 /**
  * Servlet implementation class EmpleadosController

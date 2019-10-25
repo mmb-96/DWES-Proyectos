@@ -6,8 +6,8 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import laboral.DatosNoCorrectoException;
-import laboral.Empleado;
+import Laboral.DatosNoCorrectoException;
+import Laboral.Empleado;
 
 /**
  * @author manu
